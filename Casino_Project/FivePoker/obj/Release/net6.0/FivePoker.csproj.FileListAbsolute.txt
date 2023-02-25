@@ -1,0 +1,15 @@
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\bin\Release\net6.0\FivePoker.exe
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\bin\Release\net6.0\FivePoker.deps.json
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\bin\Release\net6.0\FivePoker.runtimeconfig.json
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\bin\Release\net6.0\FivePoker.dll
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\bin\Release\net6.0\FivePoker.pdb
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\obj\Release\net6.0\FivePoker.csproj.AssemblyReference.cache
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\obj\Release\net6.0\FivePoker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\obj\Release\net6.0\FivePoker.AssemblyInfoInputs.cache
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\obj\Release\net6.0\FivePoker.AssemblyInfo.cs
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\obj\Release\net6.0\FivePoker.csproj.CoreCompileInputs.cache
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\obj\Release\net6.0\FivePoker.dll
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\obj\Release\net6.0\refint\FivePoker.dll
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\obj\Release\net6.0\FivePoker.pdb
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\obj\Release\net6.0\FivePoker.genruntimeconfig.cache
+C:\Users\smreo\Desktop\SBS\Homework\Casino_Project\FivePoker\obj\Release\net6.0\ref\FivePoker.dll
