@@ -1,0 +1,7 @@
+C:\Users\admin\Desktop\Casino\0226\main\bin\Debug\main.exe.config
+C:\Users\admin\Desktop\Casino\0226\main\bin\Debug\main.exe
+C:\Users\admin\Desktop\Casino\0226\main\bin\Debug\main.pdb
+C:\Users\admin\Desktop\Casino\0226\main\obj\Debug\main.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\Casino\0226\main\obj\Debug\main.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Casino\0226\main\obj\Debug\main.exe
+C:\Users\admin\Desktop\Casino\0226\main\obj\Debug\main.pdb
