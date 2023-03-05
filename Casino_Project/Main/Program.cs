@@ -23,6 +23,7 @@
 			if (Nickname.Length == 0)
 			{
 				Console.WriteLine("잘못된 이름입니다.");
+				Thread.Sleep(2000);
 				return;
 			}
 
