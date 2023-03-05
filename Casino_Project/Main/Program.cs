@@ -17,16 +17,51 @@
 			Console.Write("\nPress Enter...");
 			Console.ReadLine();
 			Console.Clear();
+
+            float wallet = 0;
+            var filepath = @"C:/Wallet";
+			if (File.Exists(filepath))
+			{
+				using (var reader = new StreamReader(filepath))
+				{
+					while (!reader.EndOfStream)
+					{
+						string? readlineResult = reader.ReadLine();
+						if(readlineResult != null)
+						{
+                            wallet = float.Parse(readlineResult);
+                        }
+                    }
+				}
+			}
+			else
+			{
+				using (var writer = new StreamWriter(filepath))
+				{
+					writer.WriteLine("10000");
+					wallet = 10000;
+				}
+			}
+			if (wallet <= 0)
+			{
+				Console.WriteLine("현재 수중에 돈이 없습니다. 다시 시작해주세요.");
+				File.Delete(filepath);
+				Thread.Sleep(2000);
+				return;
+			}
 			
 			Blackjack blackjack = new Blackjack();
 			Fivepoker fivepoker = new Fivepoker();
 			Roulette roulette = new Roulette();
-			float wallet = 10000;
+			string answer;
 
+			Console.WriteLine("카지노에 오신 것을 환영합니다!!");
 			while (true)
 			{
-				Console.WriteLine(@"카지노에 오신 것을 환영합니다!!
-본 카지노의 게임은 총 세 가지 입니다.
+				if (wallet <= 0)
+					break;
+                Console.WriteLine($"현재 소유금 : {wallet} 원\n");
+                Console.WriteLine(@"본 카지노의 게임은 총 세 가지 입니다.
 
 1. BlackJack  블랙잭
 2. FivePoker  파이브 포커
@@ -34,36 +69,128 @@
 
 플레이 하실 게임을 선택해주세요(다른 선택을 하면 카지노를 나갑니다.) : ");
 				int GameChoice = Convert.ToInt32(Console.ReadLine());
-				if (GameChoice == 1)
+				if (GameChoice == 1) //블랙잭
 				{
-					Console.Clear();
-					blackjack.Game();
-					wallet -= blackjack.betMoney;
-					wallet += blackjack.getMoney;
+					while (true)
+					{
+						Console.Clear();
+						Console.WriteLine($"현재 소유금 : {wallet} 원\n");
+						blackjack.Game();
+                        Thread.Sleep(1500);
+                        wallet -= blackjack.betMoney;
+						if (wallet < 0)
+						{
+							Console.Clear() ;
+							Console.WriteLine("소지금을 넘는 금액을 베팅할 수 없습니다.");
+							Thread.Sleep(2000);
+							break;
+						}
+						wallet += blackjack.getMoney;
+                        if (wallet <= 0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("돈을 모두 잃으셨습니다.");
+                            Thread.Sleep(2000);
+                            break;
+                        }
+                        Console.Write("\n게임을 계속 하시겠습니까? (Y or N) : ");
+                        answer = Console.ReadLine();
+                        if (answer == "N" || answer == "n")
+                            break;
+						else if (answer != "y" && answer != "Y")
+						{
+							Console.WriteLine("잘못된 답변은 N 으로 간주합니다.");
+							Thread.Sleep(2000);
+							break;
+						}
+                    }
 				}
-				else if (GameChoice == 2)
+				else if (GameChoice == 2) //파이브포커
 				{
-					Console.Clear();
-					fivepoker.Game();
-					wallet -= fivepoker.betMoney;
-					wallet += fivepoker.getMoney;
-				}
-				else if (GameChoice == 3)
+					while (true)
+					{
+						Console.Clear();
+                        Console.WriteLine($"현재 소유금 : {wallet} 원\n");
+                        fivepoker.Game();
+                        Thread.Sleep(1500);
+                        wallet -= fivepoker.betMoney;
+                        if (wallet < 0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("소지금을 넘는 금액을 베팅할 수 없습니다.");
+                            Thread.Sleep(2000);
+                            break;
+                        }
+						wallet += fivepoker.getMoney;
+                        if (wallet <= 0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("돈을 모두 잃으셨습니다.");
+                            Thread.Sleep(2000);
+                            break;
+                        }
+                        Console.Write("\n게임을 계속 하시겠습니까? (Y or N) : ");
+						answer = Console.ReadLine();
+						if (answer == "N" || answer == "n")
+							break;
+						else if (answer != "y" && answer != "Y")
+						{
+							Console.WriteLine("잘못된 답변은 N 으로 간주합니다.");
+							Thread.Sleep(2000);
+							break;
+						}
+					}
+                }
+				else if (GameChoice == 3) //룰렛
 				{
-					Console.Clear();
-					roulette.Game();
-					wallet -= roulette.betMoney;
-					wallet += roulette.getMoney;
-				}
+					while (true)
+					{
+						Console.Clear();
+                        Console.WriteLine($"현재 소유금 : {wallet} 원\n");
+                        roulette.Game();
+						Thread.Sleep(1500);
+						wallet -= roulette.betMoney;
+                        if (wallet < 0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("소지금을 넘는 금액을 베팅할 수 없습니다.");
+                            Thread.Sleep(2000);
+                            break;
+                        }
+						wallet += roulette.getMoney;
+                        if (wallet <= 0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("돈을 모두 잃으셨습니다.");
+                            Thread.Sleep(2000);
+                            break;
+                        }
+                        Console.Write("\n게임을 계속 하시겠습니까? (Y or N) : ");
+						answer = Console.ReadLine();
+						if (answer == "N" || answer == "n")
+							break;
+						else if (answer != "y" && answer != "Y")
+						{
+							Console.WriteLine("잘못된 답변은 N 으로 간주합니다.");
+							Thread.Sleep(2000);
+							break;
+						}
+					}
+                }
 				else 
 				{
 					Console.Clear();
 					Console.WriteLine("안녕히가세요.");
-					return;
+					Thread.Sleep(2000);
+                    using (var writer = new StreamWriter(filepath))
+                        writer.WriteLine(wallet);
+                    return;
 				}
 				Console.Clear();
 			}
-		}
+            using (var writer = new StreamWriter(filepath))
+                writer.WriteLine(wallet);
+        }
 	}
 	class Blackjack
 	{
@@ -340,8 +467,6 @@ J, Q, K 는 10으로 간주하며, A는 1 또는 11 로 원하는 수로 정할 
 					getMoney = perfectGuess.getmoney(theNum, perfectGuess.choiceNum, perfectGuess.betMoney, Cut[Choice]);
 					break;
 			}
-			Console.WriteLine("Press Enter..");
-			Console.Read();
 		}
 
 		private static int SelectNum()
@@ -401,7 +526,7 @@ J, Q, K 는 10으로 간주하며, A는 1 또는 11 로 원하는 수로 정할 
 				getMoney = 0;
 				Console.WriteLine("예상에 실패했습니다.");
 			}
-			Console.WriteLine($"배당금은 {getmoney} 원 입니다.");
+			Console.WriteLine($"배당금은 {getMoney} 원 입니다.");
 
 			return getMoney;
 		}
