@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\bin\Debug\net6.0\Entrance.exe
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\bin\Debug\net6.0\Entrance.deps.json
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\bin\Debug\net6.0\Entrance.runtimeconfig.json
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\bin\Debug\net6.0\Entrance.dll
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\bin\Debug\net6.0\Entrance.pdb
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\obj\Debug\net6.0\Entrance.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\obj\Debug\net6.0\Entrance.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\obj\Debug\net6.0\Entrance.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\obj\Debug\net6.0\Entrance.AssemblyInfo.cs
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\obj\Debug\net6.0\Entrance.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\obj\Debug\net6.0\Entrance.dll
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\obj\Debug\net6.0\refint\Entrance.dll
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\obj\Debug\net6.0\Entrance.pdb
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\obj\Debug\net6.0\Entrance.genruntimeconfig.cache
+C:\Users\admin\Desktop\Casino\Casino_Project\Entrance\obj\Debug\net6.0\ref\Entrance.dll

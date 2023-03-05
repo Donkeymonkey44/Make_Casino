@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roulette", "Roulette\Roulet
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FivePoker", "FivePoker\FivePoker.csproj", "{29F47EC1-3F9B-4616-9FFA-00820602DD72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJack", "BlackJack\BlackJack.csproj", "{1E43A5CE-6662-400D-A9CD-E024BA67E598}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlackJack", "BlackJack\BlackJack.csproj", "{1E43A5CE-6662-400D-A9CD-E024BA67E598}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entrance", "Entrance\Entrance.csproj", "{302B5163-88E0-417D-9D0B-9C9BFE08C377}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test2", "test2\test2.csproj", "{3E57C4AB-6E27-4A33-8BD0-BF136556C74D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{1E43A5CE-6662-400D-A9CD-E024BA67E598}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E43A5CE-6662-400D-A9CD-E024BA67E598}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E43A5CE-6662-400D-A9CD-E024BA67E598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{302B5163-88E0-417D-9D0B-9C9BFE08C377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{302B5163-88E0-417D-9D0B-9C9BFE08C377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{302B5163-88E0-417D-9D0B-9C9BFE08C377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{302B5163-88E0-417D-9D0B-9C9BFE08C377}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E57C4AB-6E27-4A33-8BD0-BF136556C74D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E57C4AB-6E27-4A33-8BD0-BF136556C74D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E57C4AB-6E27-4A33-8BD0-BF136556C74D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E57C4AB-6E27-4A33-8BD0-BF136556C74D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

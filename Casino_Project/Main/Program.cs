@@ -4,7 +4,7 @@
 	{
 		static void Main(string[] args)
 		{
-			Console.Write(@"
+            Console.Write(@"
 □■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□
 ■                                                                                      ■
 □              ●●●      ●●       ●●●   ●●●   ●    ●      ●●             □
@@ -14,12 +14,20 @@
 □              ●●●  ●        ●   ●●●   ●●●   ●    ●      ●●             □
 ■                                                                                      ■
 □■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□");
-			Console.Write("\nPress Enter...");
-			Console.ReadLine();
+            Console.WriteLine("\nPress Enter...");
+            Console.ReadLine();
 			Console.Clear();
+			Console.Write("이름을 입력해주세요 : ");
+			string Nickname = Console.ReadLine();
+			Console.Clear();
+			if (Nickname.Length == 0)
+			{
+				Console.WriteLine("잘못된 이름입니다.");
+				return;
+			}
 
             float wallet = 0;
-            var filepath = @"C:/Wallet";
+            var filepath = @$"C:/{Nickname}'s_Wallet";
 			if (File.Exists(filepath))
 			{
 				using (var reader = new StreamReader(filepath))
@@ -44,7 +52,8 @@
 			}
 			if (wallet <= 0)
 			{
-				Console.WriteLine("현재 수중에 돈이 없습니다. 다시 시작해주세요.");
+				Console.WriteLine($@"{Nickname} 님의 소지금은 현재 0 원 입니다.
+파일을 삭제합니다. 게임을 다시 시작해주세요.");
 				File.Delete(filepath);
 				Thread.Sleep(2000);
 				return;
@@ -60,7 +69,7 @@
 			{
 				if (wallet <= 0)
 					break;
-                Console.WriteLine($"현재 소유금 : {wallet} 원\n");
+                Console.WriteLine($"{Nickname} 님의 현재 소지금 : {wallet} 원\n");
                 Console.WriteLine(@"본 카지노의 게임은 총 세 가지 입니다.
 
 1. BlackJack  블랙잭
@@ -68,8 +77,18 @@
 3. Roullette  룰렛
 
 플레이 하실 게임을 선택해주세요(다른 선택을 하면 카지노를 나갑니다.) : ");
-				int GameChoice = Convert.ToInt32(Console.ReadLine());
-				if (GameChoice == 1) //블랙잭
+				string ChoiceStr = Console.ReadLine();
+                if (ChoiceStr.Length == 0)
+                {
+                    Console.Clear();
+                    Console.WriteLine("안녕히가세요.");
+                    Thread.Sleep(2000);
+                    using (var writer = new StreamWriter(filepath))
+                        writer.WriteLine(wallet);
+                    return;
+                }
+                int GameChoice = Convert.ToInt32(ChoiceStr);
+                if (GameChoice == 1) //블랙잭
 				{
 					while (true)
 					{
@@ -191,7 +210,40 @@
             using (var writer = new StreamWriter(filepath))
                 writer.WriteLine(wallet);
         }
-	}
+
+        static async Task SignFlash()
+        {
+            while (true)
+            {
+                Console.Write(@"
+□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□
+■                                                                                      ■
+□              ●●●      ●●       ●●●   ●●●   ●    ●      ●●             □
+■            ●           ●  ●     ●          ●     ●●  ●    ●    ●           ■  
+□           ●           ●●●●     ●●●     ●     ● ● ●   ●      ●          □
+■            ●         ●      ●         ●    ●     ●  ●●    ●    ●           ■
+□              ●●●  ●        ●   ●●●   ●●●   ●    ●      ●●             □
+■                                                                                      ■
+□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□");
+                Console.WriteLine("\nPress Enter...");
+                await Task.Delay(1250);
+                Console.Clear();
+                Console.Write(@"
+■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■
+□                                                                                      □
+■              ●●●      ●●       ●●●   ●●●   ●    ●      ●●             ■
+□            ●           ●  ●     ●          ●     ●●  ●    ●    ●           □  
+■           ●           ●●●●     ●●●     ●     ● ● ●   ●      ●          ■
+□            ●         ●      ●         ●    ●     ●  ●●    ●    ●           □
+■              ●●●  ●        ●   ●●●   ●●●   ●    ●      ●●             ■
+□                                                                                      □
+■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■");
+                Console.WriteLine("\nPress Enter...");
+                await Task.Delay(1250);
+                Console.Clear();
+            }
+        }
+    }
 	class Blackjack
 	{
 		public int betMoney;
@@ -205,7 +257,7 @@ J, Q, K 는 10으로 간주하며, A는 1 또는 11 로 원하는 수로 정할 
 딜러는 카드의 합이 16이 넘지 않으면 무조건 카드를 더 받고 21이 넘으면 패배합니다.
 플레이어는 21이 넘으면 무조건 패배합니다. 딜러가 21이 넘어도 무승부가 아닌 패배로 간주합니다.
 배당은 2배로 고정이며 패배하면 잃습니다. 예외로 처음 받은 두 카드로 21을 만들었을 시 2.5배의 배당을 갖습니다.
-딜러와 플레이어의 수의 합이 같을 경우 무승부로 배팅금을 돌려받습니다.
+딜러와 플레이어의 수의 합이 같을 경우 무승부로 베팅금을 돌려받습니다.
 
 베팅하실 금액을 입력해주세요.");
 
@@ -243,15 +295,17 @@ J, Q, K 는 10으로 간주하며, A는 1 또는 11 로 원하는 수로 정할 
 				}
 				if (SumCard(dealerCard) == 21)
 				{
-					Console.WriteLine("\nDraw");
+					Console.WriteLine($"\nDraw");
 					getMoney = betMoney;
-					return getMoney;
+                    Console.WriteLine($"배당금은 {getMoney} 원 입니다.");
+                    return getMoney;
 				}
 				else
 				{
-					Console.WriteLine("\nDraw");
+					Console.WriteLine("\nYou Win!!");
 					getMoney = betMoney * 2.5f;
-					return getMoney;
+                    Console.WriteLine($"배당금은 {getMoney} 원 입니다.");
+                    return getMoney;
 				}
 			}
 
@@ -268,7 +322,7 @@ J, Q, K 는 10으로 간주하며, A는 1 또는 11 로 원하는 수로 정할 
 					if (SumCard(playerCard) > 21)
 						break;
 				}
-				else if (answer == "2")
+				else if (answer == "2" || answer.Length == 0)
 					break;
 				else
 				{
@@ -285,7 +339,8 @@ J, Q, K 는 10으로 간주하며, A는 1 또는 11 로 원하는 수로 정할 
 			{
 				Console.WriteLine("\nYOU BUST!!!\nYou Lose...");
 				getMoney = 0;
-				return getMoney;
+                Console.WriteLine($"배당금은 {getMoney} 원 입니다.");
+                return getMoney;
 			}
 			//Thread.Sleep(1500);
 			while (SumCard(dealerCard) <= 16)
@@ -300,25 +355,29 @@ J, Q, K 는 10으로 간주하며, A는 1 또는 11 로 원하는 수로 정할 
 			{
 				Console.WriteLine("\nDealer BUST!!!\nYou Win!!");
 				getMoney = betMoney * 2;
-				return getMoney;
+                Console.WriteLine($"배당금은 {getMoney} 원 입니다.");
+                return getMoney;
 			}
 			else if (SumCard(dealerCard) > SumCard(playerCard))
 			{
 				Console.WriteLine("\nYou Lose...");
 				getMoney = 0;
-				return getMoney;
+                Console.WriteLine($"배당금은 {getMoney} 원 입니다.");
+                return getMoney;
 			}
 			else if (SumCard(dealerCard) < SumCard(playerCard))
 			{
 				Console.WriteLine("\nYou Win!!!");
 				getMoney = betMoney * 2;
-				return getMoney;
+                Console.WriteLine($"배당금은 {getMoney} 원 입니다.");
+                return getMoney;
 			}
 			else
 			{
 				Console.WriteLine("\nDraw");
-				getMoney = betMoney * 2.5f;
-				return getMoney;
+				getMoney = betMoney;
+                Console.WriteLine($"배당금은 {getMoney} 원 입니다.");
+                return getMoney;
 			}
 		}
 
@@ -652,7 +711,10 @@ J, Q, K 는 10으로 간주하며, A는 1 또는 11 로 원하는 수로 정할 
 같은 숫자를 다시 입력하면 취소됩니다. 모두 선택하셨으면 0을 입력하세요. ");
 				while (true)
 				{
-					int Change = Convert.ToInt32(Console.ReadLine()) - 1;
+					string ChangeStr = Console.ReadLine();
+					if (ChangeStr.Length == 0)
+						break;
+					int Change = Convert.ToInt32(ChangeStr) - 1;
 					if (Change == -1)
 						break;
 					else if (!(Change >= -1 && Change <= 4))
