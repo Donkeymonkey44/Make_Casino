@@ -64,7 +64,8 @@
 			Roulette roulette = new Roulette();
 			string answer;
 
-			Console.WriteLine("카지노에 오신 것을 환영합니다!!");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("카지노에 오신 것을 환영합니다!!");
 			while (true)
 			{
 				if (wallet <= 0)
@@ -77,7 +78,8 @@
 3. Roullette  룰렛
 
 플레이 하실 게임을 선택해주세요(다른 선택을 하면 카지노를 나갑니다.) : ");
-				string ChoiceStr = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
+                string ChoiceStr = Console.ReadLine();
                 if (ChoiceStr.Length == 0)
                 {
                     Console.Clear();
@@ -210,39 +212,6 @@
             using (var writer = new StreamWriter(filepath))
                 writer.WriteLine(wallet);
         }
-
-        static async Task SignFlash()
-        {
-            while (true)
-            {
-                Console.Write(@"
-□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□
-■                                                                                      ■
-□              ●●●      ●●       ●●●   ●●●   ●    ●      ●●             □
-■            ●           ●  ●     ●          ●     ●●  ●    ●    ●           ■  
-□           ●           ●●●●     ●●●     ●     ● ● ●   ●      ●          □
-■            ●         ●      ●         ●    ●     ●  ●●    ●    ●           ■
-□              ●●●  ●        ●   ●●●   ●●●   ●    ●      ●●             □
-■                                                                                      ■
-□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□");
-                Console.WriteLine("\nPress Enter...");
-                await Task.Delay(1250);
-                Console.Clear();
-                Console.Write(@"
-■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■
-□                                                                                      □
-■              ●●●      ●●       ●●●   ●●●   ●    ●      ●●             ■
-□            ●           ●  ●     ●          ●     ●●  ●    ●    ●           □  
-■           ●           ●●●●     ●●●     ●     ● ● ●   ●      ●          ■
-□            ●         ●      ●         ●    ●     ●  ●●    ●    ●           □
-■              ●●●  ●        ●   ●●●   ●●●   ●    ●      ●●             ■
-□                                                                                      □
-■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■□■");
-                Console.WriteLine("\nPress Enter...");
-                await Task.Delay(1250);
-                Console.Clear();
-            }
-        }
     }
 	class Blackjack
 	{
@@ -250,6 +219,7 @@
 		public float getMoney;
 		public float Game()
 		{
+			Console.ForegroundColor = ConsoleColor.Yellow;
 			Console.WriteLine(@"== 블랙잭 ==
 A, 2 ~ 10, J, Q, K 의 카드로 딜러와 대결을 해서 카드의 합이 21에 더 가까운 쪽이 승리하는 게임입니다.
 J, Q, K 는 10으로 간주하며, A는 1 또는 11 로 원하는 수로 정할 수 있습니다.
@@ -260,8 +230,9 @@ J, Q, K 는 10으로 간주하며, A는 1 또는 11 로 원하는 수로 정할 
 딜러와 플레이어의 수의 합이 같을 경우 무승부로 베팅금을 돌려받습니다.
 
 베팅하실 금액을 입력해주세요.");
+            Console.ForegroundColor = ConsoleColor.White;
 
-			Console.Write("베팅 금액 : ");
+            Console.Write("베팅 금액 : ");
 			betMoney = Convert.ToInt32(Console.ReadLine());
 			Console.Clear();
 			string[] Card = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
@@ -474,12 +445,15 @@ J, Q, K 는 10으로 간주하며, A는 1 또는 11 로 원하는 수로 정할 
 			int theNum;
 
 			float[] Cut = { 1.5f, 2.5f, 5, 10 };
+            Console.ForegroundColor = ConsoleColor.Yellow;
 			Console.WriteLine(@"== 룰렛 ==
 1 부터 100 까지 중 랜덤한 숫자가 정해집니다.
 숫자를 맞추는 방식에 따라 배당이 달라집니다.
 방식은 홀짝, 1/4. 10의 자리수 맞추기, 숫자 맞추기 가 있습니다.
-배당은 순서대로 1.5배, 2.5배, 5배, 10배 입니다.
+배당은 순서대로 1.5배, 2.5배, 5배, 10배 입니다.");
 
+            Console.ForegroundColor = ConsoleColor.White;
+			Console.WriteLine(@"
 맞추는 방식을 선택해주세요
 (1. 홀짝 맞추기   2. 1/4 맞추기   3. 10의 자리수 맞추기   4. 숫자 맞추기)");
 			int Choice = Convert.ToInt32(Console.ReadLine()) - 1;
@@ -658,7 +632,8 @@ J, Q, K 는 10으로 간주하며, A는 1 또는 11 로 원하는 수로 정할 
 		public void Game()
 		{
 			Random random = new Random();
-			Console.WriteLine(@"== 파이브 포커 ==
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(@"== 파이브 포커 ==
 ♠, ♣, ◈, ♥ 4종류 모양의 카드가 7 ~ 10, J, Q, K, A 총 32장의 카드로 플레이 합니다.
 5장의 카드로 만드는 족보에 따른 배당률을 갖습니다.
 
@@ -675,7 +650,8 @@ J, Q, K 는 10으로 간주하며, A는 1 또는 11 로 원하는 수로 정할 
 로얄 스트레이트 플러시               	15.0 배
 
 베팅하실 금액을 입력해주세요");
-			Console.Write("베팅 금액 : ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("베팅 금액 : ");
 			betMoney = Convert.ToInt32(Console.ReadLine());
 			Console.Clear();
 			float[] cut = { 0, 0.5f, 1, 1.5f, 2.5f, 4, 5, 7.5f, 10, 15 };
